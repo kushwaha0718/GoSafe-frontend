@@ -12,18 +12,18 @@ api.interceptors.request.use(cfg => {
 })
 
 export const searchRoutes = async (origin, destination) => {
-  const r = await api.post('/routes/search', { origin, destination })
+  const r = await api.post('/api/routes/search', { origin, destination })
   return r.data
 }
 
 export const getLocationSuggestions = async (query) => {
   if (!query || query.trim().length < 2) return []
-  try { const r = await api.get('/stations', { params: { q: query } }); return r.data.stations || [] }
+  try { const r = await api.get('/api/stations', { params: { q: query } }); return r.data.stations || [] }
   catch { return [] }
 }
 
 export const getNearbyPlaces = async (query, coords) => {
   if (!query || query.trim().length < 2) return []
-  try { const r = await api.get('/stations', { params: { q: query, lat: coords.lat, lng: coords.lng } }); return r.data.stations || [] }
+  try { const r = await api.get('/api/stations', { params: { q: query, lat: coords.lat, lng: coords.lng } }); return r.data.stations || [] }
   catch { return [] }
 }

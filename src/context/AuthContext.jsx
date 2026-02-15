@@ -3,7 +3,11 @@ import axios from 'axios'
 
 const AuthContext = createContext(null)
 
-const api = axios.create({ baseURL: '/api', timeout: 15000 })
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  timeout: 15000
+})
+
 
 // Attach token to every request automatically
 api.interceptors.request.use(cfg => {
