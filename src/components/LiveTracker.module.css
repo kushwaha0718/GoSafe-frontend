@@ -1,0 +1,54 @@
+.tracker {
+  padding: 20px;
+  border-top: 1px solid var(--accent-green);
+  background: rgba(0, 157, 255, 0.03);
+  animation: fade-in 0.3s ease;
+}
+
+.trackerHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--accent-green);
+  margin-bottom: 14px;
+}
+
+.trackerDot {
+  width: 6px;
+  height: 6px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  animation: pulse-glow 1s infinite;
+}
+
+.acquiring {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.locInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.locRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.locLabel {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+}
+
+.locVal {
+  font-size: 11px;
+  color: var(--accent-green);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}

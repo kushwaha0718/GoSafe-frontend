@@ -1,0 +1,486 @@
+.container {
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-secondary);
+  z-index: 50;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+.backBtn:hover { border-color: var(--text-secondary); color: var(--text-primary); }
+
+.headerCenter { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+.logoIcon { color: var(--accent-green); font-size: 16px; flex-shrink: 0; }
+.routeTitle { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.routeLabel { font-size: 8px; letter-spacing: 0.2em; color: var(--text-muted); }
+.routeName { font-family: var(--font-display); font-size: 14px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.routeBadges { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.safetyChip { font-size: 9px; letter-spacing: 0.1em; font-weight: 700; padding: 3px 9px; border: 1px solid; border-radius: 20px; white-space: nowrap; }
+.distChip { font-size: 9px; letter-spacing: 0.08em; color: var(--text-muted); padding: 3px 9px; border: 1px solid var(--border); border-radius: 20px; white-space: nowrap; }
+
+.headerActions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.saveBtn {
+  padding: 6px 14px;
+  background: none;
+  border: 1px solid var(--border-bright);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+.saveBtn:hover { border-color: var(--accent-green); color: var(--accent-green); }
+.saveBtnDone { border-color: var(--accent-green) !important; color: var(--accent-green) !important; }
+.sidebarToggle {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.sidebarToggle:hover { border-color: var(--accent-green); color: var(--accent-green); }
+
+/* Body */
+.body {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  /* Leave room for the bottom track bar */
+  padding-bottom: 62px;
+}
+
+.mapWrap { flex: 1; position: relative; overflow: hidden; }
+.mapFull { width: 100%; }
+
+/* Sidebar */
+.sidebar {
+  width: 300px;
+  flex-shrink: 0;
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.sideSection { padding: 16px 18px; border-bottom: 1px solid var(--border); }
+.sideSectionTitle {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Safety */
+.safetyBlock { display: flex; flex-direction: column; gap: 8px; }
+.safetyScore { font-family: var(--font-display); font-size: 36px; font-weight: 800; line-height: 1; }
+.safetyBar { height: 3px; background: var(--bg-elevated); border-radius: 2px; overflow: hidden; }
+.safetyFill { height: 100%; border-radius: 2px; transition: width 1s cubic-bezier(0.4,0,0.2,1); }
+.safetyFactors { display: flex; flex-direction: column; gap: 7px; margin-top: 6px; }
+.factor { display: flex; align-items: center; gap: 8px; }
+.factorDot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.factorName { font-size: 11px; color: var(--text-secondary); flex: 1; }
+.factorScore { font-size: 11px; font-weight: 700; color: var(--text-primary); }
+
+/* Details */
+.detailsList { display: flex; flex-direction: column; gap: 8px; }
+.detail { display: flex; justify-content: space-between; align-items: center; }
+.detailLabel { font-size: 9px; letter-spacing: 0.12em; color: var(--text-muted); }
+.detailValue { font-size: 12px; color: var(--text-primary); font-weight: 600; text-align: right; max-width: 160px; word-break: break-word; }
+
+/* Shops */
+.shopCount { background: rgba(255,184,0,0.1); border: 1px solid rgba(255,184,0,0.3); color: var(--accent-amber); padding: 2px 8px; border-radius: 2px; font-size: 9px; }
+.shopsList { display: flex; flex-direction: column; gap: 8px; max-height: 260px; overflow-y: auto; }
+.shopsEmpty { font-size: 11px; color: var(--text-muted); font-style: italic; text-align: center; padding: 16px 0; }
+.shopItem { display: flex; align-items: center; gap: 9px; padding: 7px 9px; background: var(--bg-card); border-radius: var(--radius); border: 1px solid var(--border); }
+.shopIcon { width: 30px; height: 30px; border-radius: var(--radius); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+.shopInfo { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 1px; }
+.shopName { font-size: 11px; font-weight: 600; color: var(--text-primary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.shopStation { font-size: 9px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.shopCat { font-size: 8px; letter-spacing: 0.06em; color: var(--accent-amber); padding: 2px 6px; border: 1px solid rgba(255,184,0,0.2); border-radius: 2px; white-space: nowrap; flex-shrink: 0; }
+
+/* ── TRACK BAR — fixed, always above map & leaflet controls ── */
+.trackBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 62px;
+  background: rgba(10,12,15,0.95);
+  border-top: 1px solid var(--border-bright);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  z-index: 9999;
+  backdrop-filter: blur(12px);
+  padding: 0 24px;
+}
+
+.locError {
+  font-size: 11px;
+  color: var(--accent-red);
+  border: 1px solid rgba(255,61,61,0.25);
+  padding: 4px 12px;
+  border-radius: var(--radius);
+  background: rgba(255,61,61,0.06);
+}
+
+.trackBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 28px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-bright);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.trackBtn:hover { border-color: var(--accent-green); color: var(--accent-green); box-shadow: 0 0 20px rgba(0, 157, 255, 0.15); }
+.trackBtnActive { border-color: var(--accent-green) !important; color: var(--accent-green) !important; background: rgba(0, 157, 255, 0.06) !important; }
+.trackDot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; animation: pulse-glow 1s infinite; }
+
+
+
+/* ── SOS Button ──────────────────────────────────────────────────── */
+.sosBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--accent-red);
+  border: none;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(255,61,61,0.4);
+  animation: sos-pulse 2s ease-in-out infinite;
+}
+
+@keyframes sos-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(255,61,61,0.4); }
+  50%       { box-shadow: 0 0 35px rgba(255,61,61,0.75), 0 0 60px rgba(255,61,61,0.2); }
+}
+
+.sosBtn:hover:not(:disabled) {
+  transform: scale(1.04);
+  box-shadow: 0 0 40px rgba(255,61,61,0.7);
+}
+
+.sosBtn:disabled { opacity: 0.7; cursor: not-allowed; animation: none; }
+
+.sosBtnSending {
+  background: rgba(255,61,61,0.7) !important;
+  animation: none !important;
+}
+
+.sosBtnSuccess {
+  background: var(--accent-green) !important;
+  color: #0a0c0f !important;
+  animation: none !important;
+  box-shadow: 0 0 20px rgba(0, 157, 255, 0.4) !important;
+}
+
+.sosLoader {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.sosSuccessMsg {
+  font-size: 12px;
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  border: 1px solid rgba(0, 157, 255, 0.25);
+  padding: 4px 12px;
+  border-radius: var(--radius);
+  background: rgba(0, 157, 255, 0.06);
+  animation: fade-in 0.3s ease;
+}
+
+/* ── No contacts Modal ───────────────────────────────────────────── */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  backdrop-filter: blur(4px);
+  padding: 20px;
+}
+
+.modal {
+  background: var(--bg-elevated);
+  border: 1px solid rgba(255,61,61,0.4);
+  border-radius: 16px;
+  padding: 36px 32px;
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  animation: slide-up 0.25s ease;
+  box-shadow: 0 0 60px rgba(255,61,61,0.2);
+}
+
+.modalIcon { font-size: 48px; line-height: 1; }
+
+.modalTitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.modalText {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.modalBtns { display: flex; gap: 10px; width: 100%; margin-top: 4px; }
+
+.modalCancel {
+  flex: 1;
+  padding: 11px;
+  background: none;
+  border: 1px solid var(--border-bright);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.modalCancel:hover { border-color: var(--text-secondary); }
+
+.modalAction {
+  flex: 1;
+  padding: 11px;
+  background: var(--accent-red);
+  border: none;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.modalAction:hover { opacity: 0.9; }
+/* ════════════════════════════════════════════════════════════════
+   MOBILE  ≤ 768px
+   Layout: header → map (fills screen) → fixed bottom bar
+   Sidebar becomes a bottom-sheet that slides up on tap
+   ════════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* Container fills viewport below the sticky nav (54px on mobile) */
+  .container {
+    height: calc(100vh - 54px);
+  }
+
+  /* ── Header: compact single row ── */
+  .header {
+    padding: 8px 10px;
+    gap: 8px;
+    flex-wrap: nowrap;
+    height: auto;
+    min-height: 48px;
+  }
+
+  .backBtn {
+    padding: 5px 10px;
+    font-size: 9px;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .headerCenter {
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .logoIcon { display: none; }
+
+  .routeTitle {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .routeLabel { font-size: 7px; }
+  .routeName  { font-size: 12px; }
+
+  /* Hide badges on mobile — space is too tight */
+  .routeBadges { display: none; }
+
+  .headerActions { gap: 6px; }
+
+  .saveBtn { padding: 5px 10px; font-size: 9px; }
+
+  .sidebarToggle {
+    padding: 5px 10px;
+    font-size: 9px;
+  }
+
+  /* ── Body: map takes all available vertical space ── */
+  .body {
+    flex-direction: column;
+    padding-bottom: 70px;   /* room for bottom bar */
+    overflow: hidden;
+  }
+
+  /* Map fills all horizontal + grows vertically */
+  .mapWrap {
+    flex: 1;
+    width: 100% !important;
+    height: 100%;
+    min-height: 0;
+  }
+
+  /* ── Sidebar becomes a bottom-sheet overlay ── */
+  .sidebar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 70px;              /* sits above the track bar */
+    top: auto;
+    width: 100%;
+    max-height: 55vh;
+    border-left: none;
+    border-top: 1px solid var(--border-bright);
+    border-radius: 16px 16px 0 0;
+    z-index: 120;
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.5);
+    overflow-y: auto;
+    /* smooth slide */
+    animation: slide-up 0.25s ease;
+  }
+
+  /* Pull handle */
+  .sidebar::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 4px;
+    background: var(--border-bright);
+    border-radius: 2px;
+    margin: 10px auto 4px;
+    flex-shrink: 0;
+  }
+
+  /* Section padding tighter on mobile */
+  .sideSection { padding: 12px 14px; }
+
+  /* Safety score smaller */
+  .safetyScore { font-size: 28px !important; }
+
+  /* Shops list shorter max-height */
+  .shopsList { max-height: 160px; }
+
+  /* ── Bottom track bar ── */
+  .trackBar {
+    height: 70px;
+    padding: 0 14px;
+    gap: 10px;
+  }
+
+  .trackBtn {
+    flex: 1;
+    padding: 11px 14px;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    justify-content: center;
+  }
+
+  .sosBtn {
+    padding: 11px 18px;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    flex-shrink: 0;
+  }
+
+  .locError, .sosSuccessMsg {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+
+  /* Modal fills screen better on mobile */
+  .modal {
+    padding: 28px 20px;
+    border-radius: 12px;
+  }
+
+  .modalIcon { font-size: 36px; }
+  .modalTitle { font-size: 17px; }
+  .modalText { font-size: 12px; }
+}
+
+/* ── Very small phones (iPhone SE etc) ── */
+@media (max-width: 390px) {
+  .trackBtn { font-size: 9px; padding: 10px 10px; }
+  .sosBtn   { padding: 10px 14px; font-size: 11px; }
+  .header   { padding: 6px 8px; }
+}

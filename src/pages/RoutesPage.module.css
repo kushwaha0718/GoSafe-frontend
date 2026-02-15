@@ -1,0 +1,425 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: rgba(10, 12, 15, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 50;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  padding: 8px 16px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.backBtn:hover {
+  border-color: var(--text-secondary);
+  color: var(--text-primary);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoIcon {
+  color: var(--accent-green);
+  font-size: 18px;
+}
+
+.logoText {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+}
+
+.headerRight {
+  width: 80px;
+}
+
+.journeyBar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 48px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.journeyPoint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.jDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.jLabel {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+.jName {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.journeyArrow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-muted);
+  flex: 1;
+}
+
+.arrowLine {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), var(--accent-green), var(--border));
+}
+
+.main {
+  flex: 1;
+  padding: 40px 48px 120px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+  animation: slide-up 0.4s ease;
+}
+
+/* Loading */
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: 24px;
+}
+
+.loadingAnim {
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.scanLine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-green), transparent);
+  animation: scanning 1.5s ease-in-out infinite;
+}
+
+.loadingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 10px;
+}
+
+.loadingDot {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--accent-green);
+  border-radius: 2px;
+  animation: pulse-glow 1.2s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+.loadingText {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  color: var(--accent-green);
+}
+
+.loadingSubText {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Error */
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  min-height: 300px;
+  justify-content: center;
+  color: var(--accent-red);
+}
+
+.errorIcon {
+  font-size: 32px;
+}
+
+.retryBtn {
+  padding: 10px 24px;
+  background: none;
+  border: 1px solid var(--accent-red);
+  color: var(--accent-red);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+
+.retryBtn:hover {
+  background: var(--accent-red);
+  color: white;
+}
+
+/* Section */
+.sectionHeader {
+  margin-bottom: 28px;
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.sectionNum {
+  color: var(--accent-green);
+  font-size: 40px;
+}
+
+.sectionSub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: auto;
+  letter-spacing: 0.05em;
+}
+
+.routesList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Confirm Bar */
+.confirmBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-elevated);
+  border-top: 1px solid var(--accent-green);
+  padding: 16px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  animation: slide-up 0.3s ease;
+  box-shadow: 0 -8px 32px rgba(0, 157, 255, 0.1);
+}
+
+.selectedInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.selectedLabel {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--text-muted);
+}
+
+.selectedName {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.selectedSafety {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.confirmBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  background: var(--accent-green);
+  color: #0a0c0f;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all var(--transition);
+}
+
+.confirmBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 157, 255, 0.3);
+}
+
+.confirmBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btnLoader {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(10,12,15,0.3);
+  border-top-color: #0a0c0f;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .header { padding: 16px 20px; }
+  .journeyBar { padding: 16px 20px; flex-wrap: wrap; gap: 12px; }
+  .journeyArrow { display: none; }
+  .main { padding: 24px 16px 120px; }
+  .confirmBar { padding: 12px 20px; flex-direction: column; gap: 12px; }
+  .sectionHeader { flex-direction: column; gap: 4px; }
+}
+
+/* ── Comparison bar ─────────────────────────────────────────────── */
+.compareBar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.compareTile {
+  flex: 1;
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 12px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.compareTile:hover {
+  border-color: var(--border-bright);
+  background: var(--bg-elevated);
+}
+
+.compareTileActive {
+  border-color: var(--accent-green) !important;
+  background: rgba(0, 157, 255, 0.04) !important;
+}
+
+.compareTileNum {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+.compareTileName {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.compareTileSafety {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.compareTileDetail {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+/* ── Mobile extras ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Comparison tiles scroll horizontally instead of wrapping */
+  .compareBar {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+    gap: 8px;
+  }
+  .compareBar::-webkit-scrollbar { display: none; }
+
+  .compareTile {
+    min-width: 130px;
+    flex-shrink: 0;
+    padding: 10px 12px;
+  }
+
+  /* Route cards full width, less padding */
+  .routesList { gap: 12px; }
+
+  /* Confirm bar stacks on mobile */
+  .confirmBar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px 16px;
+    height: auto;
+  }
+  .confirmBtn { width: 100%; justify-content: center; }
+
+  /* Journey bar compact */
+  .journeyBar { padding: 12px 16px; gap: 10px; }
+  .jName { font-size: 12px; }
+}
