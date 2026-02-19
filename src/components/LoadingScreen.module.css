@@ -12,3 +12,7 @@
 .text { font-family: var(--font-display); font-size: 22px; font-weight: 800; letter-spacing: 0.15em; }
 .dots { display: flex; gap: 8px; }
 .dot { width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%; animation: pulse-glow 1.2s ease-in-out infinite; opacity: 0.3; }
+
+.logoImg{
+  height: 50px;
+}

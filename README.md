@@ -279,19 +279,55 @@ Each page and component has its own `.module.css` file — styles are scoped aut
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
-### Search Page
-Origin/destination autocomplete with real-time suggestions from Nominatim.
+## Search Page
+Origin and destination autocomplete with real-time suggestions powered by **Nominatim**.
 
-### Routes Page
-Side-by-side comparison of 3 alternative routes with safety scores, duration, distance, and nearby shops.
+<p align="center">
+  <img src="public/ForReadme/search_page.png" width="700" />
+</p>
 
-### Map Page
-Interactive Leaflet map with route polyline, POI markers, and bottom action bar with SOS button.
+---
 
-### Profile Page
-Tabbed interface for profile editing, route history, saved routes, and emergency contacts management.
+## Routes Page
+Compare **3 alternative routes** side-by-side with:
+- Safety score
+- Distance & duration
+- Nearby shops and POIs
+
+<p align="center">
+  <img src="public/ForReadme/route_page.png" width="700" />
+</p>
+
+---
+
+## Map Page
+Interactive **Leaflet map** with:
+- Route polylines
+- POI markers
+- Bottom action bar with **SOS button**
+
+<p align="center">
+  <img src="public/ForReadme/map_page.png" width="700" />
+</p>
+
+---
+
+## Profile Page
+Manage everything from one place:
+- Edit profile
+- View route history
+- Save routes
+- Add emergency contacts
+
+<p align="center">
+  <img src="public/ForReadme/profile_page_1.png" width="700" />
+</p>
+
+<p align="center">
+  <img src="public/ForReadme/profile_page_2.png" width="700" />
+</p>
 
 ---
 </div>

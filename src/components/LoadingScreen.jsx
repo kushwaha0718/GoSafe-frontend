@@ -4,7 +4,7 @@ export default function LoadingScreen() {
   return (
     <div className={styles.wrap}>
       <div className={styles.logo}>
-        <img src="logo_png.png" alt="" />
+        <img src="logo_png.png" alt=""  className={styles.logoImg}/>
         <span className={styles.text}>GOSAFE</span>
       </div>
       <div className={styles.dots}>
