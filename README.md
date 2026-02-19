@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🛡️ GoSafe — Frontend
+# GoSafe — Frontend
 
 **Safe Transit Navigator**
 
@@ -16,7 +16,7 @@ A modern, responsive React application for intelligent route planning with real-
 
 ---
 
-## 🎯 Features
+## Features
 
 ### Core Functionality
 - **Intelligent Route Search** — Real-time autocomplete powered by Nominatim, displays up to 3 alternative routes with different paths
@@ -38,7 +38,7 @@ A modern, responsive React application for intelligent route planning with real-
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 | Category | Technologies |
 |----------|-------------|
@@ -53,7 +53,7 @@ A modern, responsive React application for intelligent route planning with real-
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -88,7 +88,7 @@ npm run preview    # preview the production build locally
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 client/
@@ -131,7 +131,7 @@ client/
 
 ---
 
-## 🎨 Design System
+## Design System
 
 ### Color Palette
 
@@ -164,7 +164,7 @@ client/
 
 ---
 
-## 🔐 Authentication Flow
+## Authentication Flow
 
 ```mermaid
 graph LR
@@ -184,7 +184,7 @@ graph LR
 
 ---
 
-## 🗺️ Map Implementation
+## Map Implementation
 
 ### Tech
 - **Leaflet** — Core mapping library (vanilla JS)
@@ -204,7 +204,7 @@ graph LR
 
 ---
 
-## 🆘 Emergency SOS Flow
+## Emergency SOS Flow
 
 ```javascript
 // User clicks SOS button
@@ -212,10 +212,10 @@ graph LR
 2. Check if emergency contacts exist → if not, show modal
 3. Get GPS coordinates via navigator.geolocation
 4. Build WhatsApp message:
-   "🆘 SOS ALERT from GoSafe
+   "SOS ALERT from GoSafe
    I need help! I'm currently travelling and may be in danger.
-   📍 My live location: https://maps.google.com/?q=lat,lng
-   🛣️ Route: origin → destination
+   "-" My live location: https://maps.google.com/?q=lat,lng
+   "-" Route: origin → destination
    Please check on me immediately."
 5. Open wa.me/<phone>?text=<message> for each contact
 6. Stagger by 800ms to avoid popup blocking
@@ -234,12 +234,12 @@ Change this before deploying:
 
 **`src/context/AuthContext.jsx`**
 ```javascript
-const API_BASE = 'http://localhost:3001'  // ← Change to your backend URL
+const API_BASE = 'https://gosafe-server.onrender.com' 
 ```
 
 **`src/components/Navbar.jsx`**
 ```javascript
-const API_BASE = 'http://localhost:3001'  // ← Same here
+const API_BASE = 'https://gosafe-server.onrender.com'
 ```
 
 ### Vite Proxy (Dev Only)
@@ -248,43 +248,13 @@ const API_BASE = 'http://localhost:3001'  // ← Same here
 ```javascript
 proxy: {
   '/api': {
-    target: 'http://localhost:3001',  // ← Backend dev server
+    target: 'https://gosafe-server.onrender.com',
     changeOrigin: true
   }
 }
 ```
 
----
 
-## 📦 Deployment
-
-### Option 1: Static Host (Netlify, Vercel, GitHub Pages)
-
-```bash
-npm run build
-# Upload dist/ folder
-```
-
-**Environment variables:**
-- Set `VITE_API_URL` if you need dynamic base URLs
-- Netlify: Add `_redirects` file for client-side routing:
-  ```
-  /*    /index.html   200
-  ```
-
-### Option 2: Serve from Spring Boot
-
-```bash
-npm run build
-cp -r dist/* ../backend/src/main/resources/static/
-cd ../backend
-./mvnw clean package
-java -jar target/gosafe-backend-1.0.0.jar
-```
-
-Backend will serve the frontend at `http://localhost:3001/`
-
----
 
 ## 🧪 Development Tips
 
@@ -324,46 +294,4 @@ Interactive Leaflet map with route polyline, POI markers, and bottom action bar 
 Tabbed interface for profile editing, route history, saved routes, and emergency contacts management.
 
 ---
-
-## 🐛 Common Issues
-
-### Port 5173 already in use
-```bash
-# Kill the process
-npx kill-port 5173
-# Or change the port in vite.config.js
-```
-
-### API calls return CORS errors
-- Make sure backend is running on port 3001
-- Check that CORS origins in backend include `http://localhost:5173`
-
-### Map not rendering
-- Check that `react-leaflet` and `leaflet` versions match (both 1.9.x)
-- Import Leaflet CSS in `main.jsx` or `index.html`
-
-### Images not loading (avatar URLs)
-- Avatar URLs come from backend as `/uploads/filename.jpg`
-- Prepend `API_BASE` in `AuthContext.jsx` and `Navbar.jsx`
-
----
-
-## 🤝 Contributing
-
-This is a personal project, but if you find bugs or have suggestions, feel free to open an issue.
-
----
-
-## 📄 License
-
-MIT — use it for anything, give credit if you want.
-
----
-
-<div align="center">
-
-**Built with ☕ and late nights**
-
-[⬆ Back to Top](#-gosafe--frontend)
-
 </div>
